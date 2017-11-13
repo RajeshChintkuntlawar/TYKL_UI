@@ -60,7 +60,7 @@ export class AddQuizComponent implements OnInit {
                   }); 
 
                 } else {
-                  this.message = `Question creation failed. Try again...`
+                  this.message = `Question creation failed. Try again...`;
                 }
               
               function sleep (time) {
@@ -70,6 +70,5 @@ export class AddQuizComponent implements OnInit {
             });
 
 }
-
 
 }
