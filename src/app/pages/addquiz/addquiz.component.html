@@ -1,15 +1,42 @@
-<div class="input-group">
-    <input type="text" id="quizName" name="quizName" [(ngModel)]="quizName" placeholder="Enter Quiz Name" class="form-control"/>
-  </div><br>
+
+<div class="row">
+<table class="col-md-8">
+
+<tr><td>
+    <label for="subject">Subject:</label>
+    <select required class="form-control col-md-6" id="subject" name="subject" [(ngModel)]="subject">
+      <option value="" disabled selected>Select Subject Area</option>
+      <option value="1">Technology</option>
+      <option value="2">Entertainment</option>
+      <option value="3">Sports</option>
+      <option value="4">Italian Cuisine</option>
+      <option value="5">Music</option>
+    </select>
+
+</td><td>
+    
+    <label for="complex">Complexity:</label>
+    <select required class="form-control col-md-6" id="complexity" name="complexity" [(ngModel)]="complexity">
+            <option value="" disabled selected>Select Subject Area</option>
+            <option value="1">Easy</option>
+            <option value="2">Moderate</option>
+            <option value="3">Hard</option>
+          </select>
+          </td></tr>
+</table>
+  </div>
+  
+  
+  <br>
   
   <div class="input-group">
-    <input type="text" id="q1" name="q1" [(ngModel)]="q1" required placeholder="Enter First Question" class="form-control offset-md-1"/>
+    <input type="text" id="q" name="q" [(ngModel)]="q" required placeholder="Enter First Question" class="form-control offset-md-1 col-md-6"/>
   </div>
-
+<br>
   <div class="panel panel-default">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="ion-chevron-down offset-md-1" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0)" (click)="mycollapse('divq1')"><span class="glyphicon glyphicon-th-list">
+            <a class="ion-navicon-round offset-md-1" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0)" (click)="mycollapse('divq1')"><span class="glyphicon glyphicon-th-list">
             </span>Answers</a>
         </h4>
     </div>
@@ -24,36 +51,36 @@
         <tr>
             <td>
                <div class="input-group">
-                <input type="text" required id="q1a1" name="q1a1" [(ngModel)]="q1a1" placeholder="Answer a." class="form-control"/>
+                <input type="text" required id="a1" name="a1" [(ngModel)]="a1" placeholder="Answer a." class="form-control"/>
                </div> 
             </td>
             <td >
-                &nbsp;&nbsp;<input value="q1a1" [(ngModel)]="radioQ1" type="radio" id="radioQ1" name="radioQ1"/>
+                &nbsp;&nbsp;<input value="answer1" [(ngModel)]="radioQ1" type="radio" id="radioQ1" name="radioQ1"/>
             </td>
         </tr>
         <tr>
             <td>
                  <div class="input-group"> 
-                <input type="text" required id="q1a2"  [(ngModel)]="q1a2" placeholder="Answer b." class="form-control"/>
+                <input type="text" required id="a2"  [(ngModel)]="a2" placeholder="Answer b." class="form-control"/>
                  </div> 
             </td>
-            <td>&nbsp;&nbsp;<input value="q1a2" [(ngModel)]="radioQ1" type="radio" id="radioQ1" name="radioQ1" /></td>
+            <td>&nbsp;&nbsp;<input value="answer2" [(ngModel)]="radioQ1" type="radio" id="radioQ1" name="radioQ1" /></td>
         </tr>
         <tr>
             <td>
                 <div class="input-group">
-                <input type="text" required id="q1a3" name="q1a3" [(ngModel)]="q1a3" placeholder="Answer c." class="form-control"/>
+                <input type="text" required id="a3" name="a3" [(ngModel)]="a3" placeholder="Answer c." class="form-control"/>
                 </div> 
             </td>
-            <td>&nbsp;&nbsp;<input value="q1a3" [(ngModel)]="radioQ1" type="radio" id="radioQ1" name="radioQ1" /></td>
+            <td>&nbsp;&nbsp;<input value="answer3" [(ngModel)]="radioQ1" type="radio" id="radioQ1" name="radioQ1" /></td>
         </tr>
     <tr>
         <td><div class="input-group"> 
-            <input type="text" required id="q1a4" name="q1a4" [(ngModel)]="q1a4" placeholder="Answer d." class="form-control"/>
+            <input type="text" required id="a4" name="a4" [(ngModel)]="a4" placeholder="Answer d." class="form-control"/>
         </div>
         </td>
-        <td>&nbsp;&nbsp;<input value="q1a4" [(ngModel)]="radioQ1" type="radio" id="radioQ1" name="radioQ1">
-        </td>
+        <td>&nbsp;&nbsp;<input value="answer4" [(ngModel)]="radioQ1" type="radio" id="radioQ1" name="radioQ1">
+       </td>
     </tr>
     <tr>&nbsp;</tr>
   </table>
@@ -233,4 +260,7 @@
       </table>
       </div>
       </div><br> -->
-      <button  (click)="addQuizSubmit()" class="btn btn-success">Submit Quiz</button>
+      <button  (click)="addQuizSubmit()" class="btn btn-success">Submit Quiz</button>&nbsp;&nbsp; 
+      <span style="color: red">{{message}}</span>
+    
+    

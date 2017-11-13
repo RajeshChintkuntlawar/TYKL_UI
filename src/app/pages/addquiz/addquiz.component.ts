@@ -1,6 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { Router } from '@angular/router';
+import { PagesRoutingModule } from '../pages-routing.module';
+
 
 @Component({
   selector: 'ngx-add-quiz',
@@ -9,15 +12,17 @@ import { Http, Headers } from '@angular/http';
 
 export class AddQuizComponent implements OnInit {
   
-  public quizName;
-  public q1;
-  public q1a1;
-  public q1a2;
-  public q1a3;
-  public q1a4;
-
+  public q;
+  public a1;
+  public a2;
+  public a3;
+  public a4;
+  public subject;
+  public complexity;
   public radioQ1;
+  public message;
 
+  
   public headers;
 
   postData: string;
@@ -25,7 +30,7 @@ export class AddQuizComponent implements OnInit {
   public ngOnInit() {}
 
   
-  constructor(private http: Http) {}
+  constructor(private router: Router, private http: Http) {}
 
           mycollapse(q){ 
 
@@ -37,25 +42,34 @@ export class AddQuizComponent implements OnInit {
               }
             }
 
+            
+
             public addQuizSubmit(){
               
               this.headers = new Headers();
               this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
               this.http.post('http://localhost:8080/test-your-knowledge/add'
-              , `quizName=${this.quizName}&q1=${this.q1}&q1a1=${this.q1a1}&q1a2=${this.q1a2}&q1a3=${this.q1a3}&q1a4=${this.q1a4}&radioQ1=${this.radioQ1}`, {headers: this.headers})
+              , `q=${this.q}&subject=${this.subject}&complexity=${this.complexity}&a1=${this.a1}&a2=${this.a2}&a3=${this.a3}&a4=${this.a4}&result=${this.radioQ1}`, {headers: this.headers})
               .subscribe(
-                data => this.postData = JSON.stringify(data),
-                
+                (data) => {
+                  if (data.status === 200){
+                    this.message = `Question created!`;
+                    sleep (1000).then(() => {
+                     location.reload();
                     
-                      
-              );
-              // alert(this.postData);
+                  }); 
 
-            }
+                } else {
+                  this.message = `Question creation failed. Try again...`
+                }
+              
+              function sleep (time) {
+                return new Promise((resolve) => setTimeout(resolve, time));
+              }
+              
+            });
 
 }
 
 
-
-
-
+}
